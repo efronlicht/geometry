@@ -1,22 +1,17 @@
 package concrete
 
-import "local/presentations/geometry/abstract"
+import (
+	"local/presentations/geometry/abstract"
+)
 
-type Triangle [3]Point
+type Triangle [3]abstract.Point
 
-func sign(p1, p2, p3 Point) float64 {
-	return (p1.x-p3.x)*(p2.y-p3.y) - (p2.x-p3.x)*(p1.y-p3.y)
+func sign(p1, p2, p3 abstract.Point) float64 {
+	return (p1.X()-p3.X())*(p2.Y()-p3.Y()) - (p2.X()-p3.X())*(p1.Y()-p3.Y())
 }
 func (t Triangle) Contains(p abstract.Point) bool {
-
-	var q = Point{p.Y(), p.X()}
-
-	s01 := sign(q, t[0], t[1])
-	s12 := sign(q, t[1], t[2])
-	s20 := sign(q, t[2], t[0])
+	s01 := sign(p, t[0], t[1])
+	s12 := sign(p, t[1], t[2])
+	s20 := sign(p, t[2], t[0])
 	return (s01 == s12) && (s01 == s20)
-}
-
-type Point struct {
-	y, x float64
 }
