@@ -1,7 +1,7 @@
 package concrete
 
 import (
-	"local/presentations/geometry/abstract"
+	"github.com/efronlicht/geometry/abstract"
 )
 
 type Triangle [3]abstract.Point

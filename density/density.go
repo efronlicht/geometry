@@ -1,8 +1,8 @@
 package density
 
-import "local/presentations/geometry/abstract"
-import "local/presentations/geometry/concrete"
-import "local/presentations/geometry/point"
+import "github.com/efronlicht/geometry/abstract"
+import "github.com/efronlicht/geometry/concrete"
+import "github.com/efronlicht/geometry/point"
 
 //Set uniformly sets the density of a container to n.
 func Set(c abstract.Container, n int) abstract.DenseContainer {

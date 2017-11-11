@@ -1,6 +1,6 @@
 package color
 
-import "local/presentations/geometry/abstract"
+import "github.com/efronlicht/geometry/abstract"
 
 type color string
 

@@ -1,9 +1,9 @@
 package geometry
 
 import (
-	"local/presentations/geometry/abstract"
+	"github.com/efronlicht/geometry/abstract"
 
-	"local/presentations/geometry/concrete"
+	"github.com/efronlicht/geometry/concrete"
 	"math"
 )
 

@@ -1,7 +1,7 @@
 package point
 
 import (
-	"local/presentations/geometry/abstract"
+	"github.com/efronlicht/geometry/abstract"
 	"math"
 )
 

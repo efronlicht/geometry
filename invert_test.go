@@ -1,7 +1,7 @@
 package geometry
 
 import (
-	"local/presentations/geometry/point"
+	"github.com/efronlicht/geometry/point"
 	"math"
 	"testing"
 

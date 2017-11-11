@@ -1,8 +1,8 @@
 package color
 
 import (
-	"local/presentations/geometry"
-	"local/presentations/geometry/point"
+	"github.com/efronlicht/geometry"
+	"github.com/efronlicht/geometry/point"
 	"testing"
 
 	"github.com/stretchr/testify/assert"

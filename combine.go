@@ -1,6 +1,6 @@
 package geometry
 
-import "local/presentations/geometry/abstract"
+import "github.com/efronlicht/geometry/abstract"
 
 //Union zero or more containers into a single container
 func Union(containers ...abstract.Container) abstract.Container {

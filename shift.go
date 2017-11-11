@@ -1,8 +1,8 @@
 package geometry
 
 import (
-	"local/presentations/geometry/abstract"
-	"local/presentations/geometry/point"
+	"github.com/efronlicht/geometry/abstract"
+	"github.com/efronlicht/geometry/point"
 )
 
 //Shift a container by an offset.

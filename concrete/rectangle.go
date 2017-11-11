@@ -1,6 +1,6 @@
 package concrete
 
-import "local/presentations/geometry/abstract"
+import "github.com/efronlicht/geometry/abstract"
 
 type Rectangle struct {
 	Y1, Y0 float64
