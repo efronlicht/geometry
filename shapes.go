@@ -7,17 +7,6 @@ import (
 	"math"
 )
 
-func Square(p abstract.Point, sidelen float64) (abstract.Container, bool) {
-	if negInfOrNan(sidelen) || invalid(p) {
-		return abstract.Container(nil), false
-	}
-	w := sidelen / 2
-	return concrete.Rectangle{
-		Y1: p.Y() + w, Y0: p.Y() - w,
-		X1: p.X() + w, X0: p.X() - w,
-	}, true
-}
-
 func Donut(p abstract.Point, r, R float64) (abstract.Container, bool) {
 
 	r, R = minmax(r, R)
@@ -25,7 +14,7 @@ func Donut(p abstract.Point, r, R float64) (abstract.Container, bool) {
 	outer := concrete.Circle{p, R}
 
 	if negInfOrNan(r) || negInfOrNan(R) || invalid(p) {
-		return abstract.Container(nil), false
+		return nil, false
 	}
 	return Sub(outer, inner), true
 }
@@ -53,7 +42,7 @@ func Rectangle(a, b abstract.Point) (abstract.Container, bool) {
 	y0, y1 := minmax(a.Y(), b.Y())
 	x0, x1 := minmax(a.X(), b.X())
 	if y0 == y1 || x0 == x1 {
-		return abstract.Container(nil), false
+		return nil, false
 	}
 	return concrete.Rectangle{Y1: y1, Y0: y0, X1: x1, X0: x0}, true
 }
@@ -71,5 +60,5 @@ func SemiCircle(p abstract.Point, r, start, stop float64) (container abstract.Co
 	if start > stop {
 		return
 	}
-	return concrete.SemiCircle{circle, start, stop}, true
+	return concrete.SemiCircle{circle.(concrete.Circle), start, stop}, true
 }

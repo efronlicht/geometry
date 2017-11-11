@@ -7,6 +7,8 @@ type Rectangle struct {
 	X1, X0 float64
 }
 
+var _ abstract.Container = Rectangle{}
+
 func (r Rectangle) Contains(p abstract.Point) bool {
 	y, x := p.Y(), p.X()
 	return r.Y1 > y &&

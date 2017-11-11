@@ -7,11 +7,13 @@ import (
 
 type Circle struct {
 	abstract.Point
-	radius float64
+	Radius float64
 }
 
+var _ abstract.Container = Circle{}
+
 func (c Circle) Contains(p abstract.Point) bool {
-	r := c.radius
+	r := c.Radius
 	if r < 0 {
 		return false
 	}
@@ -22,7 +24,7 @@ func (c Circle) Contains(p abstract.Point) bool {
 
 type SemiCircle struct {
 	Circle
-	start, stop float64
+	Start, Stop float64
 }
 
 func (sc SemiCircle) Contains(p abstract.Point) bool {
@@ -31,7 +33,7 @@ func (sc SemiCircle) Contains(p abstract.Point) bool {
 	}
 
 	angle := atan2(p.Y()-sc.Y(), p.X()-sc.X())
-	if sc.start <= angle && angle <= sc.stop {
+	if sc.Start <= angle && angle <= sc.Stop {
 		return true
 	}
 	return false

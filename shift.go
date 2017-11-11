@@ -10,11 +10,11 @@ func Shift(c abstract.Container, y, x float64) abstract.Container {
 	return shiftedContainer{c, offset(point.Point(y, x))}
 }
 
-func FlipAcrossY(c Container) Container {
+func FlipAcrossY(c abstract.Container) abstract.Container {
 	return shiftedContainer{c, point.InvertY}
 }
 
-func FlipAcrossX(c Container) Container {
+func FlipAcrossX(c abstract.Container) abstract.Container {
 	return shiftedContainer{c, point.InvertX}
 }
 

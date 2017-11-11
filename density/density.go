@@ -1,13 +1,15 @@
 package density
 
 import "local/presentations/geometry/abstract"
+import "local/presentations/geometry/concrete"
+import "local/presentations/geometry/point"
 
-//SetDensity uniformly sets the density of a container to n.
+//Set uniformly sets the density of a container to n.
 func Set(c abstract.Container, n int) abstract.DenseContainer {
 	return denseContainer{c, n}
 }
 
-//AdjustDensity maps the function f across the Density of the DenseContainer
+//Adjust maps the function f across the Density of the DenseContainer
 func Adjust(dc abstract.DenseContainer, f func(int) int) abstract.DenseContainer {
 	return adjuster{dc, f}
 }
@@ -17,10 +19,22 @@ func Neg(c abstract.DenseContainer) abstract.DenseContainer {
 	return adjuster{c, func(a int) int { return -a }}
 }
 
+func Union(containers ...abstract.DenseContainer) abstract.DenseContainer {
+	return denseUnion(containers)
+}
+
+func Intersection(containers ...abstract.DenseContainer) abstract.DenseContainer {
+	return denseIntersection(containers)
+}
+
 type denseContainer struct {
 	abstract.Container
 	density int
 }
+
+var origin = point.Point(0, 0)
+var unitCircle = concrete.Circle{origin, 1}
+var dc = denseContainer{unitCircle, 2}
 
 type denseUnion []abstract.DenseContainer
 
@@ -63,6 +77,7 @@ func (di denseIntersection) Density(p abstract.Point) int {
 
 	return density
 }
+
 func (d denseContainer) Density(p abstract.Point) int {
 	if d.Contains(p) {
 		return d.density
